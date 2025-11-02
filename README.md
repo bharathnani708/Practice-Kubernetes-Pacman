@@ -62,7 +62,7 @@ kubectl apply -f pacman.yaml
 ```bash
 kubectl get all -n pacman
 ```
-### You should see:
+You should see:
 mongo Deployment (database)
 pacman Deployment (frontend, 2 replicas)
 mongo Service (internal ClusterIP)
