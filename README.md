@@ -145,9 +145,9 @@ minikube delete
 
 ## 🧾 Credits
 
-Pac-Man app: lightweight Node.js frontend backed by MongoDB
-Created as a learning project to visualize Kubernetes fundamentals
-Built by "Bharath Nadigoti"
+- Pac-Man app: lightweight Node.js frontend backed by MongoDB
+- Created as a learning project to visualize Kubernetes fundamentals
+- Built by "Bharath Nadigoti"
 
 ## 💬 If this helped you, give the repo a ⭐ on GitHub — and share your Pac-Man screenshot!
 
