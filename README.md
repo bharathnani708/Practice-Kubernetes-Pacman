@@ -76,7 +76,7 @@ minikube service pacman -n pacman --url
 ```
 Copy the URL and open it in your browser — start playing Pac-Man!
 
-
+---
 
 ## 🔍 Testing Kubernetes Features
 #### 🧩 A) Self-Healing
@@ -107,7 +107,7 @@ kubectl apply -f pacman.yaml
 ```
 Reopen the game — your high scores remain!
 
-
+---
 
 ## 🧩 Understanding the Manifest (pacman.yaml)
 
@@ -128,6 +128,7 @@ This single YAML file contains all components required for the app.
 kubectl delete ns pacman
 minikube delete
 ```
+---
 
 ## 🌟 Future Improvements / Real-World Steps
 | Area                       | Suggestion                                                                |
@@ -140,4 +141,13 @@ minikube delete
 | **CI/CD**                  | Automate deployments with GitHub Actions or ArgoCD                        |
 | **Helm/Kustomize**         | Structure manifests for multi-environment management                      |
 
+---
+
+## 🧾 Credits
+
+Pac-Man app: lightweight Node.js frontend backed by MongoDB
+Created as a learning project to visualize Kubernetes fundamentals
+Built by "Bharath Nadigoti"
+
+## 💬 If this helped you, give the repo a ⭐ on GitHub — and share your Pac-Man screenshot!
 
