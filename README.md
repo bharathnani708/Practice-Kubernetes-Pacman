@@ -63,11 +63,12 @@ kubectl apply -f pacman.yaml
 kubectl get all -n pacman
 ```
 You should see:
-mongo Deployment (database)
-pacman Deployment (frontend, 2 replicas)
-mongo Service (internal ClusterIP)
-pacman Service (NodePort: 30080)
-HPA and PDB resources
+
+- mongo Deployment (database)
+- pacman Deployment (frontend, 2 replicas)
+- mongo Service (internal ClusterIP)
+- pacman Service (NodePort: 30080)
+- HPA and PDB resources
 
 ### 5️⃣ Open the Pac-Man Game 🎮
 ```bash
