@@ -33,10 +33,13 @@ Deploy a playable Pac-Man on Kubernetes while learning the essentials: Deploymen
 ```bash
 git clone https://github.com/<you>/kubernetes-pac-man-project.git
 cd kubernetes-pac-man-project
+```
 
-1) Start Minikube + enable metrics (for HPA)
+### 1) Start Minikube + enable metrics (for HPA)
+```bash
 minikube start --cpus=2 --memory=4g
 minikube addons enable metrics-server
+```
 
 
 If metrics-server takes a bit to stabilize, that’s normal. HPA will show data after a minute or two.
