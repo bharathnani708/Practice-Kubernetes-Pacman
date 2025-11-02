@@ -77,7 +77,8 @@ minikube service pacman -n pacman --url
 Copy the URL and open it in your browser — start playing Pac-Man!
 
 
-### 🔍 Testing Kubernetes Features
+
+## 🔍 Testing Kubernetes Features
 #### 🧩 A) Self-Healing
 ```bash
 kubectl delete pod -l app=pacman -n pacman
@@ -107,7 +108,8 @@ kubectl apply -f pacman.yaml
 Reopen the game — your high scores remain!
 
 
-🧩 Understanding the Manifest (pacman.yaml)
+
+## 🧩 Understanding the Manifest (pacman.yaml)
 
 This single YAML file contains all components required for the app.
 - Namespace → groups everything under pacman
@@ -119,13 +121,15 @@ This single YAML file contains all components required for the app.
 - HPA → scales Pac-Man between 2–5 replicas at 60% CPU
 - PDB → keeps at least one pod always available
 
-#### Cleanup
+
+
+## 🧹 Cleanup
 ```bash
 kubectl delete ns pacman
 minikube delete
 ```
 
-### 🌟 Future Improvements / Real-World Steps
+## 🌟 Future Improvements / Real-World Steps
 | Area                       | Suggestion                                                                |
 | -------------------------- | ------------------------------------------------------------------------- |
 | **App Exposure**           | Use an **Ingress Controller** (e.g., NGINX or ALB) instead of NodePort    |
