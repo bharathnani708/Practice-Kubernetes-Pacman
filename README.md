@@ -62,7 +62,7 @@ kubectl apply -f pacman.yaml
 ```bash
 kubectl get all -n pacman
 ```
-#### You should see:
+### You should see:
 mongo Deployment (database)
 pacman Deployment (frontend, 2 replicas)
 mongo Service (internal ClusterIP)
@@ -76,7 +76,7 @@ minikube service pacman -n pacman --url
 Copy the URL and open it in your browser — start playing Pac-Man!
 
 ### 🔍 Testing Kubernetes Features
-####🧩 A) Self-Healing
+#### 🧩 A) Self-Healing
 ```bash
 kubectl delete pod -l app=pacman -n pacman
 kubectl get pods -n pacman -w
