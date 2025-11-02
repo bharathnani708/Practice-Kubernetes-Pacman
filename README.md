@@ -76,6 +76,7 @@ minikube service pacman -n pacman --url
 ```
 Copy the URL and open it in your browser — start playing Pac-Man!
 
+
 ### 🔍 Testing Kubernetes Features
 #### 🧩 A) Self-Healing
 ```bash
@@ -83,3 +84,56 @@ kubectl delete pod -l app=pacman -n pacman
 kubectl get pods -n pacman -w
 ```
 Kubernetes automatically recreates the deleted pod.
+
+#### 📈 B) Autoscaling (HPA)
+Simulate load to trigger scaling:
+```bash
+kubectl -n pacman run loadgen --rm -it --image=williamyeh/hey -- \
+  -z 60s -c 10 http://pacman
+```
+In another terminal:
+```bash
+kubectl get hpa -n pacman -w
+kubectl get deploy pacman -n pacman -w
+```
+Watch pods increase and scale back down when load stops
+
+#### 💾 C) Persistent Storage (Scores Saved)
+Even after redeployment, scores persist because MongoDB uses a PVC.
+```bash
+kubectl delete deploy,svc,hpa,pdb -n pacman --all
+kubectl apply -f pacman.yaml
+```
+Reopen the game — your high scores remain!
+
+
+🧩 Understanding the Manifest (pacman.yaml)
+
+This single YAML file contains all components required for the app.
+- Namespace → groups everything under pacman
+- PersistentVolumeClaim → allocates 1Gi storage for MongoDB
+- MongoDB Deployment → runs MongoDB with mounted storage
+- MongoDB Service → exposes MongoDB internally to the frontend
+- Pac-Man Deployment → runs two frontend pods for HA
+- Pac-Man Service → exposes app to your browser (NodePort: 30080)
+- HPA → scales Pac-Man between 2–5 replicas at 60% CPU
+- PDB → keeps at least one pod always available
+
+#### Cleanup
+```bash
+kubectl delete ns pacman
+minikube delete
+```
+
+### 🌟 Future Improvements / Real-World Steps
+| Area                       | Suggestion                                                                |
+| -------------------------- | ------------------------------------------------------------------------- |
+| **App Exposure**           | Use an **Ingress Controller** (e.g., NGINX or ALB) instead of NodePort    |
+| **Database**               | Replace Deployment with **StatefulSet** and enable MongoDB authentication |
+| **Security**               | Use Secrets, non-root users, read-only filesystems, and NetworkPolicies   |
+| **Monitoring**             | Add Prometheus & Grafana for metrics                                      |
+| **Production Deployments** | Use EKS/GKE/AKS with `type: LoadBalancer` for external access             |
+| **CI/CD**                  | Automate deployments with GitHub Actions or ArgoCD                        |
+| **Helm/Kustomize**         | Structure manifests for multi-environment management                      |
+
+
